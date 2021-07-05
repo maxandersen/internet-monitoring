@@ -1,8 +1,9 @@
+---
 version: "3.1"
 
 volumes:
-    prometheus_data: {}
-    grafana_data: {}
+  prometheus_data: {}
+  grafana_data: {}
 
 networks:
   front-tier:
@@ -10,7 +11,8 @@ networks:
 
 services:
   prometheus:
-    image: prom/prometheus:v2.0.0
+    image: prom/prometheus:v2.25.2
+    restart: always
     volumes:
       - ./prometheus/:/etc/prometheus/
       - prometheus_data:/prometheus
@@ -29,6 +31,7 @@ services:
 
   grafana:
     image: grafana/grafana
+    restart: always
     volumes:
       - grafana_data:/var/lib/grafana
       - ./grafana/provisioning/:/etc/grafana/provisioning/
@@ -41,7 +44,7 @@ services:
     networks:
       - back-tier
       - front-tier
- 
+
   ping:
     tty: true
     stdin_open: true
@@ -50,6 +53,7 @@ services:
     ports:
       - 9115:9115
     image: prom/blackbox-exporter
+    restart: always
     volumes:
       - ./blackbox/config:/config
     command:
@@ -61,25 +65,13 @@ services:
     tty: true
     stdin_open: true
     expose:
-      - 9696
+      - 9798
     ports:
-      - 9696:9696
-    image: stefanwalther/speedtest-exporter
+      - 9798:9798
+    image: miguelndecarvalho/speedtest-exporter
     restart: always
     networks:
       - back-tier
-
-  sonos:
-    tty: true
-    stdin_open: true
-    expose: 
-      - 1915
-    ports:
-      - 1915:1915
-    image: maxandersen/sonos_exporter
-    command:
-      - '--address=0.0.0.0:1915'
-    network_mode: host
 
   nodeexp:
     privileged: true
@@ -98,4 +90,3 @@ services:
       - "^/(sys|proc|dev|host|etc|rootfs/var/lib/docker/containers|rootfs/var/lib/docker/overlay2|rootfs/run/docker/netns|rootfs/var/lib/docker/aufs)($$|/)"
     networks:
       - back-tier
-
