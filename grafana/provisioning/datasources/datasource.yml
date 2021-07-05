@@ -1,4 +1,3 @@
----
 apiVersion: 1
 
 # list of datasources that should be deleted from the database
