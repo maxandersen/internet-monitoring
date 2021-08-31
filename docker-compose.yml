@@ -79,7 +79,6 @@ services:
     image: maxandersen/sonos_exporter
     command:
       - '--address=0.0.0.0:1915'
-    network_mode: host
 
   nodeexp:
     privileged: true
