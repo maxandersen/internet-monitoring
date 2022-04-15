@@ -7,18 +7,18 @@ Before we get started installing the Prometheus stack. Ensure you install the la
 
 # Quick Start
 
-If on Mac run this:
+Mac or Linux:
 
 ```
-git clone https://github.com/maxandersen/internet-monitoring && cd internet-monitoring/prometheus && docker-compose up && open http://localhost:3030/d/o9mIe_Aik/internet-connection
+git clone https://github.com/maxandersen/internet-monitoring && cd internet-monitoring/prometheus && docker-compose up -d && open http://localhost:3030/d/o9mIe_Aik/internet-connection
 ```
 
-otherwise:
+Windows:
 
 ```
 git clone https://github.com/maxandersen/internet-monitoring
 cd internet-monitoring/prometheus
-docker-compose up
+docker-compose up -d
 ```
 
 Goto [http://localhost:3030/d/o9mIe_Aik/internet-connection](http://localhost:3030/d/o9mIe_Aik/internet-connection) (change `localhost` to your docker host ip/name).
