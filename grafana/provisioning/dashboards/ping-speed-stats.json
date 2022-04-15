@@ -3,38 +3,74 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
         "limit": 100,
         "name": "Annotations & Alerts",
         "showIn": 0,
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
         "type": "dashboard"
       }
     ]
   },
   "editable": true,
-  "gnetId": null,
+  "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
   "links": [],
+  "liveNow": false,
   "panels": [
     {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#d44a3a" 
-        "rgba(237, 129, 40, 0.89)",
-        "#299c46",
-      ],
-      "datasource": "prometheus",
-      "format": "none",
-      "gauge": {
-        "minValue": 0,
-        "show": true,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P1809F7CD0C75ACF3"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 50
+              },
+              {
+                "color": "semi-dark-green",
+                "value": 100
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
       },
       "gridPos": {
         "h": 9,
@@ -43,40 +79,21 @@
         "y": 0
       },
       "id": 8,
-      "interval": null,
       "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
       "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": true
+      "options": {
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
       },
-      "tableColumn": "",
+      "pluginVersion": "v1.0",
       "targets": [
         {
           "expr": "speedtest_bits_per_second{direction=\"downstream\"}",
@@ -85,35 +102,51 @@
           "refId": "A"
         }
       ],
-      "thresholds": "50,100",
       "title": "Download",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "avg"
+      "type": "gauge"
     },
     {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#d44a3a" 
-        "rgba(237, 129, 40, 0.89)",
-        "#299c46",
-      ],
-      "datasource": "prometheus",
-      "format": "none",
-      "gauge": {
-        "minValue": 0,
-        "show": true,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P1809F7CD0C75ACF3"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "semi-dark-red",
+                "value": null
+              },
+              {
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 50
+              },
+              {
+                "color": "semi-dark-green",
+                "value": 100
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
       },
       "gridPos": {
         "h": 9,
@@ -122,40 +155,21 @@
         "y": 0
       },
       "id": 10,
-      "interval": null,
       "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
       "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": true
+      "options": {
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
       },
-      "tableColumn": "",
+      "pluginVersion": "v1.0",
       "targets": [
         {
           "expr": "speedtest_bits_per_second{direction=\"upstream\"}",
@@ -164,37 +178,49 @@
           "refId": "A"
         }
       ],
-      "thresholds": "50,100",
       "title": "Upload",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "avg"
+      "type": "gauge"
     },
     {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#d44a3a",
-        "rgba(237, 129, 40, 0.89)",
-        "#299c46"
-      ],
-      "datasource": "prometheus",
-      "decimals": 2,
-      "format": "ms",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": true,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P1809F7CD0C75ACF3"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 2,
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": []
       },
       "gridPos": {
         "h": 9,
@@ -203,40 +229,21 @@
         "y": 0
       },
       "id": 12,
-      "interval": null,
       "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
       "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": true
+      "options": {
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
       },
-      "tableColumn": "",
+      "pluginVersion": "v1.0",
       "targets": [
         {
           "expr": "speedtest_ping",
@@ -245,33 +252,27 @@
           "refId": "A"
         }
       ],
-      "thresholds": "",
-      "title": "speedtest ping",
-      "transparent": false,
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "avg"
+      "title": "Ping",
+      "type": "gauge"
     },
     {
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P1809F7CD0C75ACF3"
+      },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 9,
         "w": 12,
         "x": 0,
         "y": 9
       },
+      "hiddenSeries": false,
       "id": 6,
       "legend": {
         "avg": false,
@@ -286,11 +287,14 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
+      "pluginVersion": "v1.0",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeat": null,
       "seriesOverrides": [],
       "spaceLength": 10,
       "stack": false,
@@ -305,9 +309,8 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "speedtest",
+      "timeRegions": [],
+      "title": "Upload and Download",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -315,40 +318,34 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
+          "$$hashKey": "object:129",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
+          "min": "0",
           "show": true
         },
         {
+          "$$hashKey": "object:130",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
+          "show": false
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
       "cards": {
+        "cardHSpacing": 2,
         "cardMinWidth": 5,
-        "cardRound": null,
-        "cardSpacing": 2
+        "cardVSpacing": 2
       },
       "color": {
         "cardColor": "#b4ff00",
@@ -359,11 +356,10 @@
         "mode": "spectrum",
         "thresholds": []
       },
-      "data": {
-        "decimals": null,
-        "unitFormat": "short"
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P1809F7CD0C75ACF3"
       },
-      "datasource": "prometheus",
       "gridPos": {
         "h": 9,
         "w": 12,
@@ -377,6 +373,11 @@
       },
       "links": [],
       "nullPointMode": "as empty",
+      "pageSize": 15,
+      "seriesFilterIndex": -1,
+      "statusmap": {
+        "ConfigVersion": "v1"
+      },
       "targets": [
         {
           "expr": "probe_success",
@@ -387,22 +388,31 @@
           "refId": "A"
         }
       ],
-      "title": "Panel Title",
+      "title": "Response times",
       "tooltip": {
-        "show": true
+        "extraInfo": "",
+        "freezeOnClick": true,
+        "items": [],
+        "show": true,
+        "showExtraInfo": false,
+        "showItems": false
       },
       "type": "flant-statusmap-panel",
       "useMax": true,
+      "usingPagination": false,
       "xAxis": {
-        "labelFormat": "%a %m/%d",
-        "minBucketWidthToShowWeekends": 4,
-        "show": true,
-        "showCrosshair": true,
-        "showWeekends": true
+        "show": true
       },
       "yAxis": {
-        "show": true,
-        "showCrosshair": false
+        "maxWidth": -1,
+        "minWidth": -1,
+        "show": true
+      },
+      "yAxisSort": "metrics",
+      "yLabel": {
+        "delimiter": "",
+        "labelTemplate": "",
+        "usingSplitLabel": false
       }
     },
     {
@@ -410,14 +420,19 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P1809F7CD0C75ACF3"
+      },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 9,
         "w": 24,
         "x": 0,
         "y": 18
       },
+      "hiddenSeries": false,
       "id": 4,
       "legend": {
         "avg": false,
@@ -431,9 +446,13 @@
       "lines": true,
       "linewidth": 1,
       "links": [],
-      "minSpan": 2,
+      "maxPerRow": 12,
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
+      "pluginVersion": "v1.0",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -453,9 +472,8 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "http duration",
+      "timeRegions": [],
+      "title": "Response times",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -463,37 +481,31 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
+          "$$hashKey": "object:49",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
+          "$$hashKey": "object:50",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     }
   ],
-  "schemaVersion": 16,
+  "refresh": "",
+  "schemaVersion": 36,
   "style": "dark",
   "tags": [
     "speedtest",
@@ -503,7 +515,7 @@
     "list": []
   },
   "time": {
-    "from": "now-24h",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {
@@ -534,5 +546,6 @@
   "timezone": "browser",
   "title": "internet connection",
   "uid": "o9mIe_Aik",
-  "version": 8
+  "version": 9,
+  "weekStart": ""
 }
