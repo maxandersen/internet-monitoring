@@ -31,7 +31,6 @@
       "datasource": "prometheus",
       "format": "none",
       "gauge": {
-        "maxValue": 50,
         "minValue": 0,
         "show": true,
         "thresholdLabels": false,
@@ -111,7 +110,6 @@
       "datasource": "prometheus",
       "format": "none",
       "gauge": {
-        "maxValue": 20,
         "minValue": 0,
         "show": true,
         "thresholdLabels": false,
