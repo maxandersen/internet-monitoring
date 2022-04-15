@@ -85,7 +85,7 @@
           "refId": "A"
         }
       ],
-      "thresholds": "25,40",
+      "thresholds": "50,100",
       "title": "Download",
       "type": "singlestat",
       "valueFontSize": "80%",
@@ -164,7 +164,7 @@
           "refId": "A"
         }
       ],
-      "thresholds": "5,10",
+      "thresholds": "50,100",
       "title": "Upload",
       "type": "singlestat",
       "valueFontSize": "80%",
