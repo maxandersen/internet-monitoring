@@ -10,7 +10,7 @@ networks:
 
 services:
   prometheus:
-    image: prom/prometheus:v2.0.0
+    image: prom/prometheus:latest
     volumes:
       - ./prometheus/:/etc/prometheus/
       - prometheus_data:/prometheus
