@@ -131,7 +131,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "semi-dark-red",
+                "color": "red",
                 "value": null
               },
               {
@@ -350,7 +350,7 @@
       "color": {
         "cardColor": "#b4ff00",
         "colorScale": "sqrt",
-        "colorScheme": "interpolateGnYlRd",
+        "colorScheme": "interpolateRdYlGn",
         "defaultColor": "#757575",
         "exponent": 0.5,
         "mode": "spectrum",
@@ -490,13 +490,14 @@
           "$$hashKey": "object:49",
           "format": "short",
           "logBase": 1,
+          "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:50",
           "format": "short",
           "logBase": 1,
-          "show": true
+          "show": false
         }
       ],
       "yaxis": {
@@ -546,6 +547,6 @@
   "timezone": "browser",
   "title": "internet connection",
   "uid": "o9mIe_Aik",
-  "version": 9,
+  "version": 4,
   "weekStart": ""
 }
