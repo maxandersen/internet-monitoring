@@ -23,6 +23,9 @@ docker-compose up
 
 Goto [http://localhost:3030/d/o9mIe_Aik/internet-connection](http://localhost:3030/d/o9mIe_Aik/internet-connection) (change `localhost` to your docker host ip/name).
 
+The default username is `admin`, the default password is `wonka`. 
+Change these as soon as you're logged in!
+
 ## Configuration
 To change what hosts you ping you change the `targets` section in [/prometheus/pinghosts.yaml](./prometheus/pinghosts.yaml) file.
 
