@@ -10,7 +10,7 @@ Ensure you have the latest version of docker and [docker-compose](https://docs.d
 
 Start off by cloning this repository to a folder of choice. You cannot change the location of this folder afterwards as it includes config files which this Docker stack uses!
 ```
-git clone https://github.com/maxandersen/internet-monitoring
+git clone https://github.com/Quinten0508/internet-monitoring
 cd internet-monitoring/prometheus
 ```
 
