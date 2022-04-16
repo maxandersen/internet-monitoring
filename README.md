@@ -1,30 +1,20 @@
 
-# A Docker Stack which Monitors your home network
+## A Docker Stack which Monitors your home network
 Here's a quick start to start up a Docker [Prometheus](http://prometheus.io/) stack containing Prometheus, Grafana with  [blackbox-exporter](https://github.com/prometheus/blackbox_exporter) and [speedtest-exporter](https://github.com/stefanwalther/speedtest-exporter) to collect and graph home network connections and speed.
 
 ## Prerequisites
 Ensure you have the latest version of docker and [docker-compose](https://docs.docker.com/compose/install/) on your host machine.
 
-## Quick Start
-Mac or Linux:
-```
-git clone https://github.com/maxandersen/internet-monitoring && cd internet-monitoring/prometheus && docker-compose up -d && open http://localhost:3030/d/o9mIe_Aik/internet-connection
-```
+# Installation
 
-Windows:
+
+Start off by cloning this repository to a folder of choice. You cannot change the location of this folder afterwards as it includes config files which this Docker stack uses!
 ```
 git clone https://github.com/maxandersen/internet-monitoring
 cd internet-monitoring/prometheus
-docker-compose up -d
 ```
 
-Go to [http://localhost:3030/d/o9mIe_Aik/internet-connection](http://localhost:3030/d/o9mIe_Aik/internet-connection) (change `localhost` to your docker host ip/name if you are logged in remotely, e.g. via an SSH connection).
-
-The default username is `admin` and the default password is `wonka`. 
-
-**Change these as soon as you are logged in!**
-
-## Configuration
+### Configuration
 To change what hosts you ping you change the `targets` section in [/prometheus/pinghosts.yaml](./prometheus/pinghosts.yaml) file.
 By default, these hosts are pinged:
 ```
@@ -33,25 +23,30 @@ http://github.com;github.com;external;internetbox
 http://192.168.1.1;internetbox;local;internetbox
 ```
 
-For speedtest the only relevant configuration is how often you want the check to happen. It is at 5 minutes by default which might be too much if you have a metered connection. The interval can be changed by editing `scrape_interval` under `speedtest` in [/prometheus/prometheus.yml](./prometheus/prometheus.yml).
+You can also change the interval at which Speedtest tests your internet speeds. This interval is at 5 minutes by default which might be too much if you have a metered connection. The interval can be changed by editing `scrape_interval` under `speedtest` in [/prometheus/prometheus.yml](./prometheus/prometheus.yml).
 
-Once configurations are done you may run the docker-compose script from the /prometheus project directory:
 
-    $ docker-compose up -d
+Once configurations are done you may run the docker-compose script from the /prometheus project directory. From inside the `internet-monitoring` dir:
+
+```
+$ cd prometheus/
+$ docker-compose up -d
+````
 That's it. docker-compose builds the entire Grafana and Prometheus stack automagically. 
+
+
+# Usage
 
 The Grafana Dashboard is now accessible via: `http://<Host IP Address>:3030` for example http://localhost:3030
 
 The default username is `admin` and the default password is `wonka`. 
 **Change these as soon as you are logged in!**
 
-The DataSource and Dashboard for Grafana are automatically provisioned. 
-
-If all works it should be available at http://localhost:3030/d/o9mIe_Aik/internet-connection - if no data shows up try change the timeduration to something smaller.
+You can access the internet-monitoring dashboard directly at http://localhost:3030/d/o9mIe_Aik/internet-connection - if no data shows up try change the timeduration to something smaller.
 
 <center><img src="images/dashboard.png" width="4600" heighth="500"></center>
 
-## Interesting urls
+# Interesting urls
 Note: replace `localhost` with your docker host ip/name if you are not running this locally.
 
 http://localhost:9090/targets shows the status of monitored targets as seen from prometheus - in this case which hosts are being pinged and speedtest. note: speedtest will take a while before it shows as UP as it takes ~30s to respond.
