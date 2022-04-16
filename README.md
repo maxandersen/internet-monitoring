@@ -44,7 +44,7 @@ The default username is `admin` and the default password is `wonka`.
 
 You can access the internet-monitoring dashboard directly at http://localhost:3030/d/o9mIe_Aik/internet-connection - if no data shows up try change the timeduration to something smaller.
 
-<center><img src="images/dashboard.png" width="4600" heighth="500"></center>
+<center><img src="images/image.png" width="4600" heighth="500"></center>
 
 # Interesting urls
 Note: replace `localhost` with your docker host ip/name if you are not running this locally.
