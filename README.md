@@ -2,6 +2,8 @@
 ## A Docker Stack which Monitors your home network
 Here's a quick start to start up a Docker [Prometheus](http://prometheus.io/) stack containing Prometheus, Grafana with  [blackbox-exporter](https://github.com/prometheus/blackbox_exporter) and [speedtest-exporter](https://github.com/stefanwalther/speedtest-exporter) to collect and graph home network connections and speed.
 
+<center><img src="images/image.png" width="4600" heighth="500"></center>
+
 ## Prerequisites
 Ensure you have the latest version of docker and [docker-compose](https://docs.docker.com/compose/install/) on your host machine.
 
@@ -43,8 +45,6 @@ The default username is `admin` and the default password is `wonka`.
 **Change these as soon as you are logged in!**
 
 You can access the internet-monitoring dashboard directly at http://localhost:3030/d/o9mIe_Aik/internet-connection - if no data shows up try change the timeduration to something smaller.
-
-<center><img src="images/image.png" width="4600" heighth="500"></center>
 
 # Interesting urls
 Note: replace `localhost` with your docker host ip/name if you are not running this locally.
