@@ -36,7 +36,7 @@ services:
       - prometheus
     ports:
       - 3030:3000
-    env_file:
+    environment:
       - ./grafana/config.monitoring
     networks:
       - back-tier
