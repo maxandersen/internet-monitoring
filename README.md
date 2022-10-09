@@ -61,5 +61,3 @@ http://localhost:9696/metrics speedtest exporter endpoint. Does take ~30 seconds
 Thanks to @vegasbrianc work on making a [super easy docker](https://github.com/vegasbrianc/github-monitoring) stack for running prometheus and grafana.
 
 I also want to disclaim that Prometheus aren't really (currently) intended for this kind of blackbox/external monitoring and this setup is not in anyway secured. Thus only use this for inspiration and do not blame me if someone hacks this and figure out what your real internet speed is :)
-
-Thanks to [Max Andersen](https://github.com/maxandersen) for the original project and the **bulk** of the work, I only made small tweaks since he does not seem to maintain his repo anymore.
