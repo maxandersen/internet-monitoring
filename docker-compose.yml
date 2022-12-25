@@ -1,16 +1,18 @@
-version: "3.1"
+version: "3"
 
 volumes:
     prometheus_data: {}
     grafana_data: {}
 
 networks:
-  front-tier:
-  back-tier:
+  internet-monitoring:
 
 services:
   prometheus:
+    container_name: prometheus
     image: prom/prometheus:latest
+    ports:
+      - 9090:9090
     volumes:
       - ./prometheus/:/etc/prometheus/
       - prometheus_data:/prometheus
@@ -19,71 +21,72 @@ services:
       - '--storage.tsdb.path=/prometheus'
       - '--web.console.libraries=/usr/share/prometheus/console_libraries'
       - '--web.console.templates=/usr/share/prometheus/consoles'
-    ports:
-      - 9090:9090
+    restart: always
+
     links:
-      - ping:ping
+      - blackbox_exporter:blackbox_exporter
       - speedtest:speedtest
     networks:
-      - back-tier
+      - internet-monitoring
 
   grafana:
+    container_name: grafana
     image: grafana/grafana
+    ports:
+      - 3030:3000
     volumes:
       - grafana_data:/var/lib/grafana
       - ./grafana/provisioning/:/etc/grafana/provisioning/
-    depends_on:
-      - prometheus
-    ports:
-      - 3030:3000
     env_file:
       - ./grafana/config.monitoring
     networks:
-      - back-tier
-      - front-tier
- 
-  ping:
-    tty: true
-    stdin_open: true
+      - internet-monitoring
+      
+  blackbox_exporter:
+    container_name: blackbox_exporter
+    image: prom/blackbox-exporter
     expose:
       - 9115
     ports:
       - 9115:9115
-    image: prom/blackbox-exporter
     volumes:
       - ./blackbox/config:/config
+    tty: true
+    stdin_open: true
     command:
       - '--config.file=/config/blackbox.yml'
     networks:
-      - back-tier
+      - internet-monitoring
+    restart: always
 
   speedtest:
+    container_name: speedtest
+    image: stefanwalther/speedtest-exporter
+    ports:
+      - 9696:9696
     tty: true
     stdin_open: true
     expose:
       - 9696
-    ports:
-      - 9696:9696
-    image: stefanwalther/speedtest-exporter
-    restart: always
     networks:
-      - back-tier
+      - internet-monitoring
+    restart: always
 
-  nodeexp:
-    privileged: true
+  node_exporter:
+    container_name: node_exporter
     image: prom/node-exporter
+    ports:
+      - 9100:9100
     volumes:
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro
       - /:/rootfs:ro
-    ports:
-      - 9100:9100
-    restart: always
+    privileged: true
     command:
       - '--path.procfs=/host/proc'
       - '--path.sysfs=/host/sys'
       - --collector.filesystem.ignored-mount-points
       - "^/(sys|proc|dev|host|etc|rootfs/var/lib/docker/containers|rootfs/var/lib/docker/overlay2|rootfs/run/docker/netns|rootfs/var/lib/docker/aufs)($$|/)"
     networks:
-      - back-tier
-
+      - internet-monitoring
+    restart: always
