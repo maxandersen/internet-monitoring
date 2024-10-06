@@ -1,4 +1,6 @@
 
+NOTE: For some reason this repository stays super popular even though I stopped using and maintaing it (missed notifications) - thus I'm going to mark this as archived to not unnecessarily mislead. If you made a fork that is better and more maintained please let me know and I'll link to it in the project description/issues.
+
 # A Docker Stack which Monitors your home network
 Here's a quick start to stand-up a Docker [Prometheus](http://prometheus.io/) stack containing Prometheus, Grafana with  [blackbox-exporter](https://github.com/prometheus/blackbox_exporter) and [speedtest-exporter](https://github.com/stefanwalther/speedtest-exporter) to collect and graph home network connections and speed.
 
